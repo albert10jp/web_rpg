@@ -1,16 +1,13 @@
-function initialization() {
-  window.total_attack = 0;
-  window.isMagicReady = false;
-}
+var total_attack = 0;
+var isMagicReady = false;
 
 class BootScene extends Phaser.Scene {
   constructor() {
     super({ key: 'BootScene' });
-    initialization();
-    console.log(window.total_attack);
+    console.log(total_attack);
   }
   preload() {
-    this.load.path = './assets/';
+    this.load.path = 'https://raw.githubusercontent.com/albert10jp/web_rpg/main/btn_cast_spell/assets/';
     this.load.spritesheet('cooldown_sheet', 'cooldown_sheet.png', { frameWidth: 48, frameHeight: 48 });
     this.load.image('magicAttack', 'magicAttack.png');
     this.load.atlas('bolt', 'bolt_atlas.png', 'bolt_atlas.json');
@@ -21,7 +18,7 @@ class BootScene extends Phaser.Scene {
     });
 
     // load frog (enemies)
-    this.load.path = './assets/frog/';
+    this.load.path = 'https://raw.githubusercontent.com/albert10jp/web_rpg/main/btn_cast_spell/assets/frog/';
     for (var i = 1; i < 3; i++) {
       this.load.image("frog_attack" + i, "frog" + i + ".gif");
     }
@@ -149,7 +146,6 @@ class BootScene extends Phaser.Scene {
       });
     });
   }
-
   create() {
     var offsetX = 300 / 2.5;
     var offsetY = 220 / 2.5 - 15;
@@ -158,14 +154,12 @@ class BootScene extends Phaser.Scene {
 
     let btn_x = 20, btn_y = 180
     this.setupBtn(btn_x, btn_y);
-
     this.player = this.physics.add.sprite(100 / 2.5, offsetY, 'brawler', 30).setOrigin(0);
     this.player.setScale(.6);
     this.player.setFlipX(true);
 
     this.enemies = [];
     this.setupAnimation();
-
     for (let y = 0; y < 3; y++) {
       for (let x = 0; x < 5; x++) {
         let posx = x * incrementX + offsetX;
