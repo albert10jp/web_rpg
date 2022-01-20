@@ -1,5 +1,3 @@
-/** @type {import("../typing/phaser")} */
-
 function initialization() {
   window.total_attack = 0;
   window.isMagicReady = false;
